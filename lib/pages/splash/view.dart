@@ -35,7 +35,7 @@ class SplashPage extends StatelessWidget {
                 ),
                 child: InkWell(
                   onTap: () {
-                    Get.offAndToNamed(RouterGet.launch);
+                    Get.offAndToNamed(RouterGet.carList);
                   },
                   child: Container(
                     alignment: Alignment.center,
