@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:veteran_setting/components/button.dart';
+import 'package:veteran_setting/components/shimmer.dart';
 import 'package:veteran_setting/model/car_record_list_entity.dart';
 import 'package:veteran_setting/routers/routers.dart';
 
@@ -28,15 +30,17 @@ class CarListPage extends StatelessWidget {
                 height: 500,
                 child: GetBuilder<CarListLogic>(
                   builder: (build) {
-                    return ListView.builder(
+                    return state.isLoading.value ?
+                    const ListViewShimmer()
+                        : ListView.builder(
                         shrinkWrap: true,
-                        itemCount: logic.state.listData?.list?.length,
+                        itemCount: state.listData?.list?.length,
                         itemBuilder: (context, index) {
                           final itemColor = index.isEven
-                              ? logic.state.evenItemColor.value
-                              : logic.state.oddItemColor.value;
+                              ? state.evenItemColor.value
+                              : state.oddItemColor.value;
                           return _listItem(
-                              logic.state.listData!.list?[index], itemColor);
+                              state.listData?.list?[index], itemColor);
                         });
                   },
                 ),
@@ -52,7 +56,7 @@ class CarListPage extends StatelessWidget {
 
 Widget _listItem(CarRecordListList? item, Color color) {
   return Container(
-      height: 56,
+      height: 50,
       color: color,
       padding: const EdgeInsets.only(bottom: 8),
       child: Row(

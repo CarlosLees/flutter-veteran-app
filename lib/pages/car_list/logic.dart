@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:get/get.dart';
 import 'package:veteran_setting/api/base_api.dart';
 
@@ -14,6 +16,7 @@ class CarListLogic extends GetxController {
 
   void carList() async {
     state.listData = await BaseApis.carList();
+    state.isLoading.value = false;
     update();
   }
 }
