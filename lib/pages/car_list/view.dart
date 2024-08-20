@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:veteran_setting/components/button.dart';
 import 'package:veteran_setting/model/car_record_list_entity.dart';
 import 'package:veteran_setting/routers/routers.dart';
 
@@ -40,33 +41,7 @@ class CarListPage extends StatelessWidget {
                   },
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.symmetric(vertical: 150, horizontal: 20),
-                child: Ink(
-                    height: 50,
-                    width: 200,
-                    decoration: BoxDecoration(
-                        color: Colors.orange,
-                        borderRadius: BorderRadius.circular(10),
-                        gradient: const LinearGradient(colors: [Colors.orange, Colors.deepOrange, Colors.orangeAccent])
-                    ),
-                    child: InkWell(
-                      onTap: () {
-                        Get.offAndToNamed(RouterGet.launch);
-                      },
-                      child: Container(
-                        alignment: Alignment.center,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(10)
-                        ),
-                        child: const Text("返回", style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20
-                        ),),
-                      ),
-                    )
-                ),
-              )
+              Button(onButtonPress: () => Get.offAndToNamed(RouterGet.launch))
             ],
           ),
         ),
